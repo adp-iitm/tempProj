@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Classroom Attendance Control</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        .controls {
+            margin: 20px 0;
+        }
+        button {
+            padding: 10px 20px;
+            margin-right: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        #stopBtn {
+            background-color: #f44336;
+        }
+        #stopBtn:hover {
+            background-color: #d32f2f;
+        }
+        .status {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 4px;
+        }
+        .status.error {
+            background-color: #ffebee;
+            color: #c62828;
+            border: 1px solid #ef9a9a;
+        }
+        .status.success {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            border: 1px solid #a5d6a7;
+        }
+    </style>
+</head>
+<body>
+    <h1>Classroom Attendance Camera</h1>
+    
+    <div class="controls">
+        <button id="startBtn" onclick="startAnalyze()">Start Analysis</button>
+        <button id="stopBtn" onclick="stopAnalyze()" disabled>Stop Analysis</button>
+    </div>
+    
+    <div id="statusMessage" class="status"></div>
+
+    <script>
+        let analyzing = false;
+        
+        // Check camera status initially and periodically
+        checkCameraStatus();
+        setInterval(checkCameraStatus, 5000);
+        
+        function checkCameraStatus() {
+            fetch('/camera-status')
+                .then(res => res.json())
+                .then(data => {
+                    if (data.error) {
+                        showError("Camera error: " + data.error);
+                    } else if (data.active) {
+                        showSuccess("Camera is active and capturing video.");
+                    } else {
+                        showStatus("Camera is not active.", "");
+                    }
+                })
+                .catch(err => {
+                    showError("Error checking camera status: " + err);
+                });
+        }
+        
+        function startAnalyze() {
+            showStatus("Starting analysis...", "");
+            fetch('/start-analyze')
+                .then(res => res.text())
+                .then(msg => {
+                    console.log(msg);
+                    if (msg.includes("Error")) {
+                        showError(msg);
+                    } else {
+                        analyzing = true;
+                        showSuccess("Analysis started successfully.");
+                        updateButtons();
+                    }
+                })
+                .catch(err => {
+                    showError("Error: " + err);
+                });
+        }
+
+        function stopAnalyze() {
+            showStatus("Stopping analysis...", "");
+            fetch('/stop-analyze')
+                .then(res => res.text())
+                .then(msg => {
+                    console.log(msg);
+                    analyzing = false;
+                    showSuccess("Analysis stopped.");
+                    updateButtons();
+                })
+                .catch(err => {
+                    showError("Error: " + err);
+                });
+        }
+        
+        function updateButtons() {
+            document.getElementById('startBtn').disabled = analyzing;
+            document.getElementById('stopBtn').disabled = !analyzing;
+        }
+        
+        function showError(message) {
+            const statusEl = document.getElementById('statusMessage');
+            statusEl.textContent = message;
+            statusEl.className = "status error";
+        }
+        
+        function showSuccess(message) {
+            const statusEl = document.getElementById('statusMessage');
+            statusEl.textContent = message;
+            statusEl.className = "status success";
+        }
+        
+        function showStatus(message, className) {
+            const statusEl = document.getElementById('statusMessage');
+            statusEl.textContent = message;
+            statusEl.className = "status " + className;
+        }
+    </script>
+</body>
+</html>

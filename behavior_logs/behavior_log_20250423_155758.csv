@@ -1,0 +1,21 @@
+timestamp,name,attention_state,gaze_status,posture_status,emotion,behavior,phone_detected
+2025-04-23 15:58:30,Aditya,DISTRACTED: Gaze undetected,Gaze undetected,Good Posture,Unknown,Attentive,False
+2025-04-23 15:58:36,Aditya,DISTRACTED: Gaze undetected,Gaze undetected,Good Posture,Unknown,Attentive,False
+2025-04-23 15:58:41,Aditya,DISTRACTED: Gaze undetected,Gaze undetected,Good Posture,Unknown,Attentive,False
+2025-04-23 15:58:46,Aditya,DISTRACTED: Gaze undetected,Gaze undetected,Good Posture,Unknown,Attentive,False
+2025-04-23 15:58:52,Unknown,DISTRACTED: Gaze undetected,Gaze undetected,Good Posture,Unknown,Attentive,False
+2025-04-23 15:58:58,Aditya,DISTRACTED: Gaze undetected,Gaze undetected,Good Posture,Unknown,Attentive,False
+2025-04-23 15:59:03,Aditya,DISTRACTED: Gaze undetected,Gaze undetected,Good Posture,Unknown,Attentive,False
+2025-04-23 15:59:08,Aditya,DISTRACTED: Gaze undetected,Gaze undetected,Good Posture,Unknown,Attentive,False
+2025-04-23 15:59:14,Aditya,DISTRACTED: Gaze undetected,Gaze undetected,Good Posture,Unknown,Attentive,False
+2025-04-23 15:59:19,Aditya,DISTRACTED: Phone detected,Gaze undetected,Good Posture,Unknown,Attentive,True
+2025-04-23 15:59:25,Aditya,DISTRACTED: Gaze undetected,Gaze undetected,Good Posture,Unknown,Attentive,False
+2025-04-23 15:59:32,Aditya,DISTRACTED: Poor posture,Gaze undetected,Bad Posture,Unknown,Attentive,False
+2025-04-23 15:59:37,Aditya,DISTRACTED: Poor posture,Gaze undetected,Bad Posture,Unknown,Attentive,False
+2025-04-23 15:59:42,Aditya,DISTRACTED: Poor posture,Gaze undetected,Bad Posture,Unknown,Attentive,False
+2025-04-23 15:59:47,Aditya,DISTRACTED: Gaze undetected,Gaze undetected,Good Posture,Unknown,Attentive,False
+2025-04-23 15:59:52,Aditya,DISTRACTED: Gaze undetected,Gaze undetected,Good Posture,Unknown,Attentive,False
+2025-04-23 15:59:57,Aditya,DISTRACTED: Gaze undetected,Gaze undetected,Good Posture,Unknown,Attentive,False
+2025-04-23 16:00:03,Unknown,DISTRACTED: Gaze undetected,Gaze undetected,Good Posture,Unknown,Attentive,False
+2025-04-23 16:00:10,Aditya,DISTRACTED: Gaze undetected,Gaze undetected,Good Posture,Unknown,Attentive,False
+2025-04-23 16:00:12,Aditya,DISTRACTED: Gaze undetected,Gaze undetected,Good Posture,Unknown,Attentive,False
